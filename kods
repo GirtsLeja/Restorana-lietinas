@@ -1,0 +1,80 @@
+class Restaurant:
+    def __init__(self, name, id, address, location):
+        self.name = name
+        self.id = id
+        self.address = address
+        self.location = location
+        self.menu = []
+
+    def add_food(self, food):
+        self.menu.append(food)
+
+    def delete_food(self, food_name):
+        found = False
+        for food in self.menu:
+            if food.name == food_name:
+                self.menu.remove(food)
+                found = True
+        
+        if not found:
+            print(f"Could not find {food_name} in the menu.")
+            
+    def PrintMenu(self):
+        print(f"Restaurāna nosaukums: {self.name}")
+        bool_to_yesno = {True: "yes", False: "no"}
+        
+        for ediens in self.menu:
+            vegetarian_status = bool_to_yesno[ediens.vegeterian]
+            gluten_free_status = bool_to_yesno[ediens.gluten_free]
+            print(f"{ediens.name}, {ediens.type}, Vegeterian: {vegetarian_status}, Gluten free: {gluten_free_status}, Price {ediens.price}")
+
+
+#Restaurant name menu
+#name, type, Vegeterian: (yes/no), Gluten free: (yes/no), Price: price
+#name, type, Vegeterian: (yes/no), Gluten free: (yes/no), Price: price
+#name, type, Vegeterian: (yes/no), Gluten free: (yes/no), Price: price
+#name, type, Vegeterian: (yes/no), Gluten free: (yes/no), Price: price
+#name, type, Vegeterian: (yes/no), Gluten free: (yes/no), Price: price
+
+class Food:
+    def __init__(self, type, name, price, vegeterian, gluten_free):
+        self.type = type
+        self.name = name
+        self.price = price
+        self.vegeterian = vegeterian
+        self.gluten_free = gluten_free    
+
+
+class courier:
+    def __init__(self, company, delivery_time, rating):
+        self.company = company
+        self.time = delivery_time
+        self.rating = rating  
+
+
+class clients:
+    def __init__(self, full_name, adress, client_id):
+        self.name = full_name
+        self.adress = adress        
+        self.client_id = client_id    
+        self.orders = []
+    
+    def place_order(self):
+        pass
+
+    def cancel_order(self):
+        pass
+
+def galvena_programma():
+    rest1 = Restaurant("Vairāk saules", 1, "Domina shopping", (50.1234, 49.123))
+
+    rest1.add_food(Food("Starter", "Spring rolls", 4.00, True, True))
+    rest1.add_food(Food("Salad", "Cezar", 8.50, False, True))
+    rest1.add_food(Food("Main", "Burger", 12.00, True, False))
+
+    #rest1.delete_food("Zupa")
+    
+    rest1.PrintMenu()
+
+
+galvena_programma()
